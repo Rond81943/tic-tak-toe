@@ -9,11 +9,11 @@ function cellClicked(cellIndex) {
         cell.setAttribute('data-value', currentPlayer);
         board[cellIndex] = currentPlayer;
         if (checkWinner(currentPlayer)) {
-            document.getElementById("message").textContent = `Игрок ${currentPlayer} победил!`;
+            showGameOverModal(`Игрок ${currentPlayer} победил!`);
             gameEnded = true;
             offBoard();
         } else if (isBoardFull()) {
-            document.getElementById("message").textContent = "Ничья!";
+            showGameOverModal("Ничья!");
             gameEnded = true;
             offBoard();
         } else {
@@ -21,6 +21,14 @@ function cellClicked(cellIndex) {
             if (currentPlayer === "◯") {ai()}
         }
     }
+}
+
+function restartGame() {
+    window.location.reload();
+}
+function showGameOverModal(message) {
+    document.getElementById("gameOverMessage").textContent = message;
+    document.getElementById("gameOverModal").style.display = "flex";
 }
 
 function checkWinner(player) {
@@ -45,17 +53,18 @@ function offBoard() {
 }
 
 
+
 function imba(n) {
     const cell = document.getElementById(`cell${n}`);
     cell.textContent = currentPlayer;
     cell.setAttribute('data-value', currentPlayer);
     board[n] = currentPlayer;
     if (checkWinner(currentPlayer)) {
-        document.getElementById("message").textContent = `Игрок ${currentPlayer} победил!`;
+        showGameOverModal(`Игрок ${currentPlayer} победил!`);
         gameEnded = true;
         offBoard();
     } else if (isBoardFull()) {
-        document.getElementById("message").textContent = "Ничья!";
+        showGameOverModal("Ничья!");
         gameEnded = true;
         offBoard();
     }
