@@ -1,0 +1,61 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: rgb(159, 210, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    gap: 10px;
+}
+
+.cell {
+    border: 1px solid #000;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.cell:hover {
+    background-color: rgb(130, 171, 207);
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+}
+
+.cell[data-value="✖"] {
+    color: rgb(255, 101, 101);
+    cursor: default;
+    pointer-events: none;
+}
+
+.cell[data-value="◯"] {
+    color: rgb(38, 129, 32);
+    cursor: default;
+    pointer-events: none;
+}
+
+.cell[data-value]:hover {
+    background-color: inherit;
+    cursor: default !important;
+    pointer-events: none;
+}
+
